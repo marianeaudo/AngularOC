@@ -1,0 +1,18 @@
+<li class="base list-group-item" [ngClass]="{'like': likeNumber>dislikeNumber, 'dislike': likeNumber<dislikeNumber}">
+    <div class="row">
+        <div class="col-sm-6">
+            <p class="title">{{title}}</p>
+        </div>
+        <div class="col-sm-6">
+            <p class="content date">{{created_at | date: 'short'}}</p>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-12">
+        <p class="content">{{content}}</p>
+        <p class="content">{{lovesIt}}</p>
+    </div>
+    </div>
+    <button class="btn btn-success" (click)="onLoveIt()">Love it!</button>
+    <button class="btn btn-danger" (click)="onDislikeIt()">Don't love it!</button>
+</li>
