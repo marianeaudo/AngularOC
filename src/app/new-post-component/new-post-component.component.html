@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Nouveau post</h1>
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="form-group">
+                    <label for="title">
+                        Titre de l'article
+                    </label>
+                    <input type="text" id="title" class="form-control" name="nameTitle" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="contenu">
+                        Contenu de l'article
+                    </label>
+                    <input id="contenu" class="form-control" name="nameContent" ngModel>
+                </div>
+                <button class="btn btn-primary" type="submit">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+</div>

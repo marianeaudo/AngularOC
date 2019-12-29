@@ -1,31 +1,44 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { PostService } from '../services/post.service';
+
 
 @Component({
   selector: 'app-post-list-item-component',
   templateUrl: './post-list-item-component.component.html',
   styleUrls: ['./post-list-item-component.component.scss']
 })
-export class PostListItemComponentComponent implements OnInit {
+export class PostListItemComponentComponent {
 
-  @Input() title;
-  @Input() content;
-  @Input() lovesIt;
+  @Input() title: string;
+  @Input() content: string;
+  @Input() loveIts: number;
   @Input() created_at;
+  @Input() index: number;
 
-  likeNumber:number=0;
-  dislikeNumber:number=0
+  constructor(private postsService : PostService) { 
+  }
 
-  constructor() { }
-
-  ngOnInit() {
+  compare(): string {
+    if (this.loveIts <0) {
+      return 'dislike';
+    } else if (this.loveIts>0) {
+      return 'like';
+    }
   }
 
   onLoveIt(){
-    this.likeNumber++;
+    this.postsService.like(this.index);
+    console.log(this.postsService.posts[this.index].loveIts); 
   }
 
   onDislikeIt() {
-    this.dislikeNumber++;
+    this.postsService.dislike(this.index);
   }
+
+  onSupprimer() {
+    this.postsService.supprimerPost(this.index);
+  }
+
+
 
 }
